@@ -15,6 +15,7 @@ json=$(while IFS= read -r line; do
     jq -n --arg env "$env" --arg path "$line" '{env: $env, path: $path}'
 done < "path_file_sorted.txt" | jq -n '.items |= [inputs]')
 
+json=$(echo $json | sed 's/"/\\"/g' | sed -e 's/ //g' )
 echo json=$json >> $GITHUB_ENV
 echo $json | jq '.'
 rm -f *.txt
