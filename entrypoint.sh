@@ -17,4 +17,4 @@ done < "path_file_sorted.txt" | jq -n '.items |= [inputs]')
 
 echo json=$json >> $GITHUB_ENV
 echo $json | jq '.'
-rm -f*.txt
+rm -f *.txt
