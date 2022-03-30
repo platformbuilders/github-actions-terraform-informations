@@ -6,7 +6,7 @@ COPY entrypoint.sh /entrypoint.sh
 
 # Install bash
 RUN apk update
-RUN apk add bash git
+RUN apk add bash git jq
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
