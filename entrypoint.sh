@@ -4,6 +4,7 @@ diff=$(git diff-tree --no-commit-id --name-status -r ${GITHUB_SHA::7} --diff-fil
 
 echo action=$(echo $diff | awk '{print $1}') >> $GITHUB_ENV
 echo file=$(echo $diff | awk '{print $2}') >> $GITHUB_ENV
+export file=$(echo $diff | awk '{print $2}')
 echo file_path=${file%/*} >> $GITHUB_ENV
 echo env=$(echo $file | sed 's;/; ;g' | awk '{print $1}') >> $GITHUB_ENV
 echo region=$(echo $file | sed 's;/; ;g' | awk '{print $2}') >> $GITHUB_ENV
