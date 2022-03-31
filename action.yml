@@ -5,10 +5,6 @@ branding:
   icon: feather
   color: gray-dark
 
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-
 inputs:
   changed-files:
     description: 'The env var with all changed files'
