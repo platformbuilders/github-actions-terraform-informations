@@ -5,7 +5,7 @@ for file in $1; do
 done
 
 while IFS= read -r line; do
-    export diff_line=`echo $line | awk '{print $2}'`
+    export diff_line=`echo $line | awk '{print $1}'`
     export diff_line=${diff_line%/*}
     echo $diff_line >> path_file.txt
 done < "diff.txt"
