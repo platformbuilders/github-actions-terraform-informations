@@ -1,6 +1,8 @@
 #!/bin/bash -x
 
-git diff-tree --no-commit-id --name-status -r ${GITHUB_SHA::7} --diff-filter=ACM >> diff.txt
+for file in $1; do
+    echo $file"\n" >> diff.txt
+done
 
 while IFS= read -r line; do
     export diff_line=`echo $line | awk '{print $2}'`
