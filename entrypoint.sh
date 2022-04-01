@@ -15,7 +15,7 @@ sort -u path_file.txt >> path_file_sorted.txt
 json=$(while IFS= read -r line; do
     export env=$(echo $line | sed 's;/; ;g' | awk '{print $1}')
     export resource_name=$(echo $line | sed 's;/; ;g' | awk '{print $4}')
-    jq -n --arg env "$resource_name" --arg env "$env" --arg path "$line" '{resource_name: $resource_name, env: $env, path: $path}'
+    jq -n --arg resource_name "$resource_name" --arg env "$env" --arg path "$line" '{resource_name: $resource_name, env: $env, path: $path}'
 done < "path_file_sorted.txt" | jq -n '.include |= [inputs]')
 
 json=$(echo $json | sed 's/"/\\"/g' | sed -e 's/ //g' )
